@@ -9,7 +9,7 @@ app.secret_key = "vaani_secret_key"
 # -----------------------------
 # Set your OpenAI API Key
 # -----------------------------
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = "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"
 
 # -----------------------------
 # Preloaded Modules and Lessons
