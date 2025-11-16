@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VaaniTedEx</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:#fffaf0;
+      color:#333;
+      padding:20px;
+    }
+
+    header, h3, form, .feedback, a {
+      opacity:0;
+      transform:translateY(-20px);
+      animation:fadeIn 1s forwards;
+    }
+
+    header { animation-delay:0.2s; text-align:center; color:#2c3e50; margin-bottom:20px;}
+    h3 { animation-delay:0.5s; color:#2980b9;}
+    form { animation-delay:0.8s; max-width:600px; margin:0 auto;}
+    .feedback { animation-delay:1s; background:#d9edf7; border-left:4px solid #31708f; padding:10px; border-radius:5px; margin-top:15px; }
+    a { animation-delay:1.2s; display:block; text-align:center; margin-top:20px; color:#3498db; text-decoration:none;}
+
+    @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+
+    textarea { width:100%; padding:10px; border-radius:5px; border:1px solid #ccc; font-size:1rem; }
+    button { background:#3498db; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; margin-top:10px; }
+    button:hover { background:#2980b9; }
+    .status { color:green; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <header><h1>VaaniTedEx</h1></header>
+
+  <h3>Topic:</h3>
+  <p><strong>{{ topic }}</strong></p>
+
+  <form method="POST" id="tedexForm">
+    <label>Type your response:</label><br>
+    <textarea id="response" name="response" rows="6" required>{% if user_response %}{{ user_response }}{% endif %}</textarea><br><br>
+
+    <button type="button" id="recordBtn">🎤 Speak</button>
+    <span id="status" class="status"></span><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if feedback %}
+    <div class="feedback">{{ feedback }}</div>
+  {% endif %}
+
+  <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+
+  <script>
+    const recordBtn = document.getElementById('recordBtn');
+    const responseArea = document.getElementById('response');
+    const status = document.getElementById('status');
+
+    let recognizing = false;
+    let recognition;
+
+    if ('webkitSpeechRecognition' in window) {
+      recognition = new webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+
+      recognition.onstart = function() { recognizing=true; status.innerText='Recording...'; };
+      recognition.onresult = function(event) { responseArea.value = event.results[0][0].transcript; };
+      recognition.onerror = function(event) { status.innerText='Error: ' + event.error; };
+      recognition.onend = function() { recognizing=false; status.innerText='Recording stopped'; };
+    } else {
+      recordBtn.disabled = true;
+      status.innerText='Speech recognition not supported';
+    }
+
+    recordBtn.addEventListener('click', ()=>{ recognizing?recognition.stop():recognition.start(); });
+  </script>
+</body>
+</html>

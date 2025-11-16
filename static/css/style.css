@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #111;
+    color: #f1f1f1;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    padding: 15px;
+    background: #222;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    margin: 0;
+}
+
+.nav a {
+    margin-left: 15px;
+    color: #ddd;
+    text-decoration: none;
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    background: #1c1c1c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+}
+
+.input-box, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #222;
+    color: #fff;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.btn {
+    padding: 12px 18px;
+    background: #5a67d8;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.grid {
+    display: flex;
+    gap: 10px;
+}
+
+.box {
+    flex: 1;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.module-box {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.module-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.response-box {
+    background: #444;
+    padding: 15px;
+    border-radius: 10px;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vaani - Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f6fa;
+      margin:0;
+      padding:0;
+      color:#333;
+    }
+
+    header {
+      text-align:center;
+      padding:30px 10px 10px 10px;
+      background: #3498db;
+      color:white;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      opacity:0;
+      transform: translateY(-20px);
+      animation: fadeIn 1s forwards;
+    }
+
+    header h1 { margin:0; font-size:2rem; }
+    header p { margin:5px 0 0 0; font-size:1.1rem; font-weight:400; }
+
+    .features {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:20px;
+      padding:30px;
+      max-width:1000px;
+      margin:0 auto;
+      opacity:0;
+      transform: translateY(-20px);
+      animation: fadeIn 1s forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    .card {
+      background:#fff;
+      width:180px;
+      height:140px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      cursor:pointer;
+      transition:transform 0.2s, box-shadow 0.2s;
+      text-decoration:none;
+      color:#333;
+    }
+
+    .card:hover {
+      transform:translateY(-5px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .card h3 { margin:10px 0 0 0; font-size:1.2rem; }
+    .card p { font-size:0.9rem; margin:5px 0 0 0; color:#666; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vaani Dashboard</h1>
+    <p>Access all features from here</p>
+  </header>
+
+  <div class="features">
+    <a href="{{ url_for('show_module', module_name='greetings') }}" class="card">
+      <h3>Modules</h3>
+      <p>Learn English lessons</p>
+    </a>
+
+    <a href="{{ url_for('practice', module_name='greetings') }}" class="card">
+      <h3>Practice</h3>
+      <p>Answer questions & get feedback</p>
+    </a>
+
+    <a href="{{ url_for('tedex') }}" class="card">
+      <h3>VaaniTedEx</h3>
+      <p>Type or speak your responses</p>
+    </a>
+
+    <a href="{{ url_for('diary') }}" class="card">
+      <h3>Diary</h3>
+      <p>Record your daily practice</p>
+    </a>
+
+    <a href="{{ url_for('streak') }}" class="card">
+      <h3>Streak</h3>
+      <p>Track your progress</p>
+    </a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirm Language - Vaani</title>
+<style>
+body { font-family:'Poppins',sans-serif; background:#f7f9fc; margin:0; display:flex; justify-content:center; align-items:center; height:100vh; }
+.card { background:white; padding:30px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); text-align:center; width:90%; max-width:400px; animation:fadein 1s ease-in; }
+h2 { color:#0b2a6f; margin-bottom:20px; }
+p { margin-bottom:20px; font-weight:600; }
+button { padding:10px 20px; border:none; border-radius:6px; background:#0b2a6f; color:white; cursor:pointer; transition:0.3s; }
+button:hover { background:#094280; }
+@keyframes fadein { 0% {opacity:0;} 100% {opacity:1;} }
+</style>
+</head>
+<body>
+<div class="card">
+    <h2>Confirm Language</h2>
+    <p>You selected <strong>{{ language }}</strong></p>
+    <form method="POST" action="{{ url_for('language_confirm') }}">
+    <button type="submit">Confirm & Continue</button>
+</form>
+
+</div>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirm Language</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:#fffaf0;
+      color:#333;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      text-align:center;
+    }
+
+    h1, p, form {
+      opacity:0;
+      transform: translateY(-20px);
+      animation: fadeIn 1s forwards;
+    }
+
+    h1 { animation-delay: 0.2s; }
+    p { animation-delay: 0.5s; }
+    form { animation-delay: 0.8s; }
+
+    @keyframes fadeIn {
+      to { opacity:1; transform: translateY(0); }
+    }
+
+    button {
+      background:#3498db;
+      color:#fff;
+      padding:10px 20px;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+      margin-top:20px;
+    }
+
+    button:hover { background:#2980b9; }
+
+    strong { color:#e67e22; }
+  </style>
+</head>
+<body>
+  <h1>Language Selected</h1>
+  <p>Your chosen language: <strong>{{ user_lang }}</strong></p>
+  <form method="POST">
+    <button type="submit">Proceed to Dashboard</button>
+  </form>
+</body>
+</html>
+

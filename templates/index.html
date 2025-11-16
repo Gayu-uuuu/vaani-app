@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vaani - Welcome</title>
+  <!-- Auto redirect after 3 seconds -->
+  <meta http-equiv="refresh" content="3;url={{ url_for('language_select') }}">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:#f5f6fa;
+      margin:0;
+      padding:0;
+      color:#333;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      text-align:center;
+      overflow:hidden;
+    }
+
+    img, h1, p, footer {
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeIn 1.5s forwards;
+    }
+
+    img {
+      height:180px; /* larger logo */
+      margin-bottom:20px;
+      animation-delay: 0.2s;
+    }
+
+    h1 {
+      font-size:3rem;
+      color:#3498db;
+      margin:0;
+      animation-delay: 0.5s;
+    }
+
+    p {
+      font-size:1.2rem;
+      margin:10px 0 10px 0;
+      color:#2c3e50;
+    }
+
+    p:nth-of-type(1) { animation-delay: 0.8s; }
+    p:nth-of-type(2) { animation-delay: 1.0s; }
+    p:nth-of-type(3) { animation-delay: 1.2s; }
+
+    footer {
+      font-size:0.9rem;
+      color:#777;
+      margin-top:40px;
+      animation-delay: 1.4s;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity:1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="{{ url_for('static', filename='logo.png') }}" alt="Vaani Logo">
+  
+  <p><b><i>Your AI Powered Speaking Coach</i></b></p>
+  <p>Turning every word into confidence</p>
+  <p>Redirecting...</p>
+
+  <footer>Powered by OpenAI</footer>
+</body>
+</html>
